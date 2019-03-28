@@ -6,7 +6,7 @@
   "scripts": {
     "tsc": "tsc",
     "dev": "ts-node-dev --respawn --transpileOnly ./app",
-    "prod": "tsc && node ./build"
+    "start": "tsc && node ./build"
   },
   "keywords": [],
   "author": "",
