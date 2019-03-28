@@ -18,7 +18,7 @@ passport.use(
       clientID: process.env.GOOGLECLIENT,
       clientSecret: process.env.GOOGLESECRET,
       callbackURL: '/auth/google/callback', // This is the route the user takes after OAuth from Google
-      proxy: false
+      proxy: true
     },
     async (accessToken: any, refreshToken: any, profile: any, done: any) => {
       const existingUser: any = await User.findOne({
