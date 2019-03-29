@@ -26,8 +26,7 @@ router.get(
       "user-read-email",
       "user-read-private",
       "user-read-recently-played"
-    ],
-    showDialog: true
+    ]
   }),
   (req, res) => {
     // The request will be redirected to spotify for authentication, so this
