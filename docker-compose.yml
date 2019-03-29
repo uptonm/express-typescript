@@ -1,0 +1,21 @@
+version: '3'
+services:
+  app:
+    container_name: express-mongo
+    restart: always
+    build: ./
+    ports:
+      - '8080:8080'
+    volumes:
+      - .:/app
+    links:
+      - mongo
+    environment:
+      - DB_URI=mongodb://mongo:27017/session-store
+    depends_on:
+      - mongo
+  mongo:
+    container_name: mongo
+    image: mongo
+    ports:
+      - '27017:27017'
