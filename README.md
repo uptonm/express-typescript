@@ -11,6 +11,8 @@ PORT=8000
 DB_URI=mongodb://localhost:27017/express-ts
 GOOGLECLIENT=YOUR-GOOGLE-API-ID
 GOOGLESECRET=YOUR-GOOGLE-API-SECRET
+SPOTIFYCLIENT=YOUR-SPOTIFY-API-ID
+SPOTIFYSECRET=YOUR-SPOTIFY-API-SECRET
 ```
 
 Now you will need to install [Docker](https://docs.docker.com/install/) to host your local instance of MongoDB. Once installed, open up a terminal and install MongoDB with the following command.
