@@ -1,8 +1,10 @@
 import passport from 'passport';
 import googleOauth from 'passport-google-oauth20';
+import spotifyOauth from 'passport-spotify';
 import User from '../models/userSchema';
 
 const googleStrategy = googleOauth.Strategy;
+const spotifyStrategy = spotifyOauth.Strategy;
 
 passport.serializeUser((user: any, done) => {
   done(null, user.id);
@@ -39,6 +41,38 @@ passport.use(
         email: profile.emails[0].value
       }).save();
 
+      done(null, user);
+    }
+  )
+);
+
+passport.use(
+  new spotifyStrategy(
+    {
+      clientID: process.env.SPOTIFYCLIENT,
+      clientSecret: process.env.SPOTIFYSECRET,
+      callbackURL: "/auth/spotify/callback"
+    },
+    async (accessToken: any, refreshToken: any, expires_in: any, profile: any, done: any) => {
+      const existingUser: any = await User.findOne({
+        email: profile.emails[0].value
+      });
+      if (existingUser) {
+        if (!existingUser.spotifyId) {
+          existingUser.spotifyId = profile.id;
+          await existingUser.save();
+        }
+        return done(null, existingUser);
+      }
+      const user = await new User({
+        spotifyId: profile.id,
+        email: profile.emails[0].value,
+        first: profile.displayName.split(" ")[0],
+        last: profile.displayName.split(" ")[1],
+        avatar: profile.photos[0],
+        spotifyRefresh: refreshToken,
+        spotifyAccess: accessToken
+      }).save();
       done(null, user);
     }
   )
