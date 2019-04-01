@@ -61,6 +61,8 @@ passport.use(
       if (existingUser) {
         if (!existingUser.spotifyId) {
           existingUser.spotifyId = profile.id;
+          existingUser.spotifyAccess = accessToken;
+          existingUser.spotifyRefresh = refreshToken;
           await existingUser.save();
         }
         return done(null, existingUser);
