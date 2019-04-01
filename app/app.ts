@@ -22,10 +22,12 @@ app.use(passport.session());
 app.use(morgan('tiny'));
 app.use(cors());
 
-import userRoutes from './routes/userRoutes';
 import authRoutes from './routes/authRoutes';
+import userRoutes from './routes/userRoutes';
+import spotifyRoutes from './routes/spotifyRoutes';
 
-app.use('/api', userRoutes);
 app.use(authRoutes);
+app.use('/api', userRoutes);
+app.use('/api', spotifyRoutes);
 
 export default app;
