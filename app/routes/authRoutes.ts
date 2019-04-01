@@ -25,7 +25,10 @@ router.get(
     scope: [
       "user-read-email",
       "user-read-private",
-      "user-read-recently-played"
+      "user-read-recently-played",
+      "user-top-read",
+      "user-read-playback-state",
+      "user-read-currently-playing"
     ]
   }),
   (req, res) => {
