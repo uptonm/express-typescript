@@ -24,10 +24,10 @@ app.use(cors());
 
 import authRoutes from './routes/authRoutes';
 import userRoutes from './routes/userRoutes';
-import spotifyRoutes from './routes/spotifyRoutes';
+// import spotifyRoutes from './routes/spotifyRoutes';
 
 app.use(authRoutes);
 app.use('/api', userRoutes);
-app.use('/api', spotifyRoutes);
+// app.use('/api', spotifyRoutes);
 
 export default app;
