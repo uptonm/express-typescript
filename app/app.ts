@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import passport from 'passport';
 import express from 'express';
 import morgan from 'morgan';
+import helmet from 'helmet';
 import cors from 'cors';
 
 require('dotenv').config();
@@ -20,6 +21,7 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(morgan('tiny'));
+app.use(helmet({}));
 app.use(cors());
 
 import authRoutes from './routes/authRoutes';
