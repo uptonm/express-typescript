@@ -1,5 +1,7 @@
 # Express-Typescript
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/uptonm/express-typescript.svg)](https://greenkeeper.io/)
+
 Attempt to add some structure to a basic express API through the introduction of stronger typecasting. Built-in typescript, transpiled down to es5, ran through pm2 for container support.
 
 ## Getting started
